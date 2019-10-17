@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       events: [],
       limitPerPage: 10,
-      offset: 0
+      page: 1,
+      pageCount: 1
     };
 
     this.loadCommentsFromServer = this.loadCommentsFromServer.bind(this);
@@ -20,14 +21,16 @@ class App extends Component {
   loadCommentsFromServer() {
     $.ajax({
       url: '/events',
-      data: { limit: this.state.limitPerPage, offset: this.state.offset },
+      data: { _limit: this.state.limitPerPage, _page: this.state.page },
       dataType: 'json',
       type: 'GET',
 
-      success: events => {
+      success: (events, textSatus, request) => {
         this.setState({
           events: events,
-          pageCount: Math.ceil(events.length / this.state.limitPerPage)
+          pageCount: Math.ceil(
+            request.getResponseHeader('X-Total-Count') / this.state.limitPerPage
+          )
         });
       }
     });
@@ -38,10 +41,9 @@ class App extends Component {
   }
 
   handlePageClick(data) {
-    let selected = data.selected;
-    let offset = Math.ceil(selected * this.props.perPage);
+    let page = data.selected;
 
-    this.setState({ offset: offset }, () => {
+    this.setState({ page }, () => {
       this.loadCommentsFromServer();
     });
   }

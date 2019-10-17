@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 
 class Events extends Component {
   render() {
-    const eventNodes = this.props.events
-      .slice(0, 10)
-      .map(function(event, index) {
-        return <div key={index}>{event.description}</div>;
-      });
+    const eventNodes = this.props.events.map(function(event, index) {
+      return <li key={index}>{event.description}</li>;
+    });
 
-    return (
-      <div>
-        <ul>{eventNodes}</ul>
-      </div>
-    );
+    return <ul>{eventNodes}</ul>;
   }
 }
 
