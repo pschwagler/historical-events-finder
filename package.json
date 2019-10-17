@@ -16,6 +16,7 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "babel-loader": "^8.0.6",
+    "jquery": "^3.4.1",
     "json-server": "^0.15.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
