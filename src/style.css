@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 80%;
+}
+
+.pagination li {
+  display: block;
+  flex-grow: 1;
+  border: 1px solid #1d1c1c4d;
+  border-right: 0;
+}
+
+.pagination li:last-child {
+  border-right: 1px solid #1d1c1d4d;
+}
+
+.pagination li a,
+.pagination li span {
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.pagination li a:hover {
+  background-color: rgba(3, 169, 244, 0.55);
+  border: 1px solid #03a9f4;
+  font-weight: bold;
+  color: rgb(12, 121, 170);
+  cursor: pointer;
+}
+
+.pagination li a:focus {
+  outline: none;
+}

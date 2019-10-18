@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactPaginate from 'react-paginate';
 import Events from './components/Events.jsx';
 import $ from 'jquery';
+import './style.css';
 
 class App extends Component {
   constructor(props) {
@@ -41,8 +42,8 @@ class App extends Component {
   }
 
   handlePageClick(data) {
-    let page = data.selected;
-
+    let page = data.selected + 1;
+    console.log(page);
     this.setState({ page }, () => {
       this.loadCommentsFromServer();
     });
